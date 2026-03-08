@@ -1,0 +1,16 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="utf-8">
+    <title>Büşra'nın Portfolyosu</title>
+    
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+    <nav><h1>Hoş Geldin, Büşra!</h1></nav>
+    <hr>
+    {% block icerik %}
+    {% endblock %}
+</body>
+</html>

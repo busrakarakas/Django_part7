@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+
+{% block icerik %}
+<style>
+    /* Cam Efektli Kart */
+    .glass-kart {
+        background: rgba(255, 255, 255, 0.15);
+        -webkit-backdrop-filter: blur(15px);
+        backdrop-filter: blur(15px);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        padding: 40px;
+        border-radius: 25px;
+        width: 400px;
+        margin: 50px auto;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        color: white;
+    }
+
+    /* Form Girişleri için özel stil */
+    input, textarea {
+        width: 100%;
+        padding: 10px;
+        margin: 10px 0;
+        border-radius: 10px;
+        border: none;
+        background: rgba(255, 255, 255, 0.8);
+    }
+
+    .btn-kaydet {
+        background: #764ba2;
+        color: white;
+        padding: 12px 25px;
+        border: none;
+        border-radius: 10px;
+        width: 100%;
+        cursor: pointer;
+        font-weight: bold;
+    }
+</style>
+
+<div class="glass-kart">
+    <h2 style="text-align: center;">Yeni Proje Ekle</h2>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="btn-kaydet">Kaydet</button>
+    </form>
+</div>
+{% endblock %}

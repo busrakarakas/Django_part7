@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+
+{% block icerik %}
+<style>
+    /* Cam Efekti Kart Stili */
+    .kart {
+        background: rgba(255, 255, 255, 0.2);
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(255, 255, 255, 0.3);
+        color: white;
+        padding: 25px;
+        border-radius: 20px;
+        margin: 20px auto;
+        width: 400px;
+        box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+    }
+    .ekle-butonu {
+        display: inline-block;
+        margin: 20px;
+        padding: 10px 20px;
+        background: #764ba2;
+        color: white;
+        text-decoration: none;
+        border-radius: 10px;
+    }
+</style>
+
+<h2 style="color: white; text-align: center;">Projelerim</h2>
+
+<div style="text-align: center;">
+    <a href="{% url 'proje_ekle' %}" class="ekle-butonu">+ Yeni Proje Ekle</a>
+</div>
+
+{% for proje in projeler %}
+    <div class="kart">
+        <h3>{{ proje.baslik }}</h3>
+        <p>{{ proje.detay|truncatechars:100 }}</p>
+        <a href="{% url 'proje_detay' proje.pk %}">
+            <button style="background: rgba(255, 255, 255, 0.3); color: white; border: none; padding: 10px 20px; border-radius: 8px; cursor: pointer;">Daha Fazla</button>
+        </a>
+    </div>
+{% empty %}
+    <p style="color: white; text-align: center;">Henüz bir proje eklenmemiş.</p>
+{% endfor %}
+{% endblock %}
